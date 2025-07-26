@@ -1,0 +1,69 @@
+flowchart TD
+    subgraph Gym Management System
+        A[Website Login] --> A1(Register Account)
+        A --> A2(Login / Logout)
+        A --> A3(Not Authenticated Page)
+        
+        A2 --> B{User Dashboard}
+        
+        B --> B1[Member Dashboard]
+        B1 --> B1.1[Weekly Calendar of All Sessions]
+        B1.1 --> B1.1.1(Create Booking)
+        B1 --> B1.2[Personal Bookings]
+        B1.2 --> B1.2.1(Cancel Booking)
+        B1 --> B1.3[Member Microblog Feed]
+        B1.3 --> B1.3.1(Create Post)
+        B1.3 --> B1.3.2(Delete Own Post)
+
+        B --> B2[Trainer Dashboard]
+        B2 --> B2.1[Weekly Calendar of All Sessions]
+        B2.1 --> B2.1.1(View Session Details)
+        B2 --> B2.2[Weekly Sessions for Trainers]
+        B2 --> B2.3[Member Microblog Feed]
+        B2.3 --> B2.3.1(View Post Details)
+
+        B --> B3[Administrator Dashboard]
+        B3 --> B3.1[Users CRUD]
+        B3.1 --> B3.1.1(Create/Read/Update/Delete Users)
+        B3 --> B3.2[Posts CRUD]
+        B3.2 --> B3.2.1(Create/Read/Update/Delete Posts)
+        B3.2.1 --> B3.2.1.1(Delete Any Post)
+        B3 --> B3.3[Sessions CRUD]
+        B3.3 --> B3.3.1(Create/Read/Update/Delete Sessions)
+        B3.3.1 --> B3.3.1.1(Filter by Date Range)
+        B3.3.1 --> B3.3.1.2(Filter by Trainer)
+        B3 --> B3.4[Bookings CRUD]
+        B3.4 --> B3.4.1(Create/Read/Update/Delete Bookings)
+        B3.4.1 --> B3.4.1.1(Filter by Member)
+        B3 --> B3.5[Activities CRUD]
+        B3.5 --> B3.5.1(Create/Read/Update/Delete Activities)
+        B3 --> B3.6[Locations CRUD]
+        B3.6 --> B3.6.1(Create/Read/Update/Delete Locations)
+        B3 --> B3.7[Member Microblog Feed]
+        B3.7 --> B3.7.1(View Post Details)
+    end
+
+    subgraph Mobile-First Web Application
+        C[Mobile Login] --> C1(Register)
+        C --> C2(Login)
+        
+        C2 --> D{Mobile User Dashboard}
+        
+        D --> D1[Timetable]
+        D1 --> D1.1(Create Booking from Scheduled Session)
+        D1 --> D1.2(View Session Details)
+        D --> D2[Microblog Feed]
+        D2 --> D2.1(Create Post)
+        D2 --> D2.2(View Post Details)
+        D --> D3[XML Export]
+        D3 --> D3.1{User Role Check}
+        D3.1 -->|Trainer| D3.1.1(Export Scheduled Sessions)
+        D3.1 -->|Member| D3.1.2(Export Previous Bookings with Activity Data)
+    end
+
+    A3 --> A[Website Login]
+    C1 --> C[Mobile Login]
+    C2 --> C[Mobile Login]
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#f9f,stroke:#333,stroke-width:2px
